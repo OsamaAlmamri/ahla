@@ -1,0 +1,12 @@
+.idea
+vendor
+.env
+node_modules/
+storage
+info
+vendor.zip
+vendor_wind.zip
+public/uploads/
+Sabafon_Laravel.zip
+nova-components.zip
+*.zip
