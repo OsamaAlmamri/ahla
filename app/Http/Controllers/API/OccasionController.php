@@ -85,8 +85,12 @@ class OccasionController extends BaseAPIController
             ]);
             if ($validator->fails()) {
                 return $this->validationError($validator);
+
             }
             $visitor = Visitor::where('qr_code', $request->qr_code)->get()->first();
+
+            if ($visitor == null)
+                         return $this->sendResponse([], "in vaild ", 500);
             if ($request->type == 'is_login' and $visitor->is_login == 0)
                 $add = ['is_login' => 1, 'login_time' => now()];
             elseif ($request->type == 'have_food' and $visitor->have_food == 0)
