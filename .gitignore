@@ -2,7 +2,7 @@
 vendor
 .env
 node_modules/
-storage
+
 info
 vendor.zip
 vendor_wind.zip
