@@ -1,1 +1,4 @@
-# Sabafon_Laravel
+# ahla
+````
+php artisan nova:publish
+````
