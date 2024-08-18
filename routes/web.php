@@ -13,40 +13,11 @@ use Illuminate\Support\Str;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::Any('/index.php/fsm', 'ArtisanCommandsController@fsm');
 
 Route::get('/', function () {
     return view('welcome');
 });
-function sendSmsMessage($mobile, $msg)
-{
-    $url = "http://104.37.188.218/PROFESIONAL/SMG_SND/addSMS_quick";
-    $data = http_build_query(array(
-        "UserName" => "Pro@prodigy-sys.com",
-        "Password" => "343287",
-        "CIIDSEQ" => "48",
-        "CWID" => "1",
-        "CIUTL" => $mobile,
-        "CIID" => "CO-SM-48",
-        "CIUID" => "SM-48",
-        "MAMS" => $msg,
-        "MAHE" => "Prodigy system",
-        "MAIM" => "1"
-    ));
-    $options = array(
-        'http' => array(
-            'header' => "Content-type: application/x-www-form-urlencoded",
-            'method' => 'POST',
-            'content' => $data,
-        ),
-    );
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    return $result;
-}
-Route::get('/sendsms/{mobile?}/{$message?}',function ($mobile=773569041,$message=""){
-    return sendSmsMessage($mobile, $message) ;
-});
+
 
 Route::get('download_app', function () {
     //  $id = setting('app_link');
@@ -77,8 +48,8 @@ Route::get('/storage_link', 'ArtisanCommandsController@storageLnk');
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect('/dashboard');
-})->name('home');
-
+//Route::get('/', function () {
+//    return redirect('/dashboard');
+//})->name('home');
+//
 
